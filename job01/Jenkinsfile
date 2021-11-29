@@ -23,7 +23,7 @@ pipeline {
                         """{
                             "files": [
                                 {
-                                    "pattern": "build/libs/*.war",
+                                    "pattern": "build/libs/temafinal01.war",
                                     "target": "cloud-native-temafinal01"
                                 }
                             ]

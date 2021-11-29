@@ -16,8 +16,8 @@ pipeline {
                         """{
                             "files": [
                                 {
-                                    "pattern": "cloud-native-temafinal01/*.war",
-                                    "target": "job01/build/libs/*.war"
+                                    "pattern": "cloud-native-temafinal01/temafinal01.war",
+                                    "target": "job01/build/libs/temafinal01.war"
                                 }
                             ]
                     }"""
