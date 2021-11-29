@@ -1,0 +1,22 @@
+plugins {
+    id 'war'
+}
+
+group 'com.gustavoboliveira.cloud_native.temafinal01'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.9'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.9'
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.9'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}

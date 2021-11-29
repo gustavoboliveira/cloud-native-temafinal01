@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-access')
+        DOCKERHUB_REPOSITORY_NAME = 'gustavoboliveira/cloud-native-temafinal01'
+    }
+    
+    stages {
+
+        stage('Download Artifactory JFrog') {
+            steps{
+                rtDownload(
+                    serverId: "jfrog-temafinal",
+                    spec:
+                        """{
+                            "files": [
+                                {
+                                    "pattern": "cloud-native-temafinal01/*.war",
+                                    "target": "job01/build/libs/*.war"
+                                }
+                            ]
+                    }"""
+                )
+            }
+        }
+        stage('Packer Image DockerHub') {
+            steps {
+                sh 'packer build  -var "dockerhub_repository_name=$DOCKERHUB_REPOSITORY_NAME" -var "dockerhub_username=$DOCKERHUB_CREDENTIALS_USR" -var "dockerhub_user_password=$DOCKERHUB_CREDENTIALS_PSW" "job02/configs.json"'
+            }
+        }
+        
+        
+    }
+}

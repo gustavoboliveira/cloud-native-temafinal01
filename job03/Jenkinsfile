@@ -1,0 +1,18 @@
+pipeline {
+
+   agent any
+
+   stages {
+      stage('Pull image DockerHub') {
+         steps {
+            sh 'docker pull gustavoboliveira/cloud-native-temafinal01:temafinal01'
+         }
+      }
+
+      stage('Run image Docker') {
+         steps {
+            sh 'docker run -it --rm -p 8083:8080 -d gustavoboliveira/cloud-native-temafinal01:temafinal01'
+         }
+      }
+   }
+}
